@@ -3,7 +3,7 @@
 Advent of Code 2017
 Python
 
-Thanks to Tyler Tesch for making my code more effiecient by removing an eval and just using the function itself.
+Thanks to Tyler Tesch for helping make my code more effiecient/effective
 
 # https://stackoverflow.com/questions/23706690/how-do-i-make-make-spiral-in-python
 # http://adventofcode.com/2017/day/3
@@ -25,6 +25,7 @@ Thanks to Tyler Tesch for making my code more effiecient by removing an eval and
 """
 
 from itertools import cycle
+
 
 def part1(number):
     # movement_pattern = ("move_right", "move_up", "move_left", "move_down") make actual function calls....
@@ -55,17 +56,19 @@ def part1(number):
 
         for _ in range(layer):
             # call specific direction move's method the required number of times.
-            # print(x, coords)
+            # print("({}, {})".format(x, coords)) 
             coords = direction(coords)
             x += 1
 
             if x >= number:
+                # print("({}, {})".format(x, coords)) 
                 return abs(coords[0]) + abs(coords[1])
 
 
 def part2(number):
+    """Read data from first one and work from there?"""
     pass
 
-
+# part1(325489)
 print("Part One...", part1(325489))
 print("Part Two...", part2(325489))
