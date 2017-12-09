@@ -51,15 +51,43 @@ def part1():
                 # print(nums)
                 # print(gift)
 
-
         # if this number sequence has appeared before
         if nums in old_nums:
-            # print(old_nums)
+            # print this for part 2
+            # print(nums)
             return iterations
 
 
 def part2():
-    pass
+    start = [0, 14, 13, 12, 11, 10, 8, 8, 6, 6, 5, 3, 3, 2, 1, 10]
+    nums = [0, 14, 13, 12, 11, 10, 8, 8, 6, 6, 5, 3, 3, 2, 1, 10]
+
+    iterations = 0
+
+    while True:
+        iterations += 1
+        where_the_giver_is = nums.index(max(nums))
+        gift = nums[where_the_giver_is]
+
+        current = where_the_giver_is
+        nums[where_the_giver_is] = 0
+        while gift > 0:
+            try:
+                # move on to the end of the list giving
+                current += 1
+                gift -= 1
+                nums[current] += 1  # point of exception
+                # print(nums)
+                # print(gift)
+            except IndexError:
+                # go to start of list!
+                current = 0
+                nums[current] += 1
+                # print(nums)
+                # print(gift)
+
+        if nums == start:
+            return iterations
 
 
 print("Part One...", part1())
