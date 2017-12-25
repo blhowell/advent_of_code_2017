@@ -49,5 +49,52 @@ def part1():
     return max(values.values())
 
 
+def part2():
+    # >>> eval(asdf[-3]+asdf[-2]+asdf[-1])
+    values = {}
+    largest = 0
+
+    # instructions = [['wui', 'inc', '-120', 'if', 'i', '>', '-2038']]
+    for instruction in instructions:
+        # print(instruction)
+        # print(values)
+        if str(instruction[-3]) in values:
+            if str(instruction[0]) not in values:
+                values.update({instruction[0]: 0})
+            #                               value           operator            value
+            # if eval(str(values[str(instruction[-3])]) + instruction[-2] + instruction[-1]):
+            if eval(str(values[str(instruction[-3])]) + instruction[-2] + instruction[-1]):
+                # do thing
+                if instruction[1] == "inc":
+                    values[instruction[0]] += int(instruction[2])
+                    if values[instruction[0]] > largest:
+                        largest = values[instruction[0]]
+                if instruction[1] == "dec":
+                    values[instruction[0]] -= int(instruction[2])
+                    if values[instruction[0]] > largest:
+                        largest = values[instruction[0]]
+
+        # have to initialize
+        else:
+            values.update({instruction[-3]: 0})
+            # print("NEW!", values)
+            # handle first
+            if str(instruction[0]) not in values:
+                values.update({instruction[0]: 0})
+
+            if eval(str(values[str(instruction[-3])]) + instruction[-2] + instruction[-1]):
+                # do thing
+                if instruction[1] == "inc":
+                    values[instruction[0]] += int(instruction[2])
+                    if values[instruction[0]] > largest:
+                        largest = values[instruction[0]]
+                if instruction[1] == "dec":
+                    values[instruction[0]] -= int(instruction[2])
+                    if values[instruction[0]] > largest:
+                        largest = values[instruction[0]]
+
+    return largest
+
+
 print("Part One...", part1())
-# print("Part Two...", part2())
+print("Part Two...", part2())
