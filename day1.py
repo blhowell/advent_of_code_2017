@@ -13,10 +13,10 @@ def part1(sequence):
     total = [int(num) for i, num in enumerate(str(sequence)) if num == str(big_sequence)[i + 1]]
     return "Total: {}".format(sum(total))
    
-    # # list is circular. ---(if the last and first digita are the same, add them... to the total)
+    # # list is circular. ---(if the last and first digits are the same, add them... to the total)
 
     # # I had an idea for a 'cute' solution. It gets weird.
-    # # Apparently not efficent. However, great example for understandability --- me thinks.
+    # # Apparently not efficent. However, great example for understandability --- methinks.
     # check_list = []
     # total = 0
 
